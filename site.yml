@@ -1,0 +1,9 @@
+---
+- name: ConfigSync - Common and Security configuration
+  hosts: linux_servers
+  become: true
+  gather_facts: true
+
+  roles:
+    - common
+    - security

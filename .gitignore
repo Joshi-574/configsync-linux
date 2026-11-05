@@ -1,0 +1,10 @@
+.vagrant/
+*.pem
+*_key
+*.retry
+*.log
+__pycache__/
+.env
+*.swp
+inventory/hosts.ini
+logs/

@@ -1,0 +1,22 @@
+---
+- name: Configure secure SSH settings
+  ansible.builtin.template:
+    src: sshd_config.conf.j2
+    dest: /etc/ssh/sshd_config.d/00-configsync.conf
+    owner: root
+    group: root
+    mode: '0600'
+    validate: '/usr/sbin/sshd -t -f %s'
+  notify: Restart SSH service
+
+- name: Verify firewall is active
+  ansible.builtin.command: systemctl is-active firewalld
+  register: firewall_status
+  changed_when: false
+  failed_when: firewall_status.stdout != "active"
+
+- name: Verify SELinux is enforcing
+  ansible.builtin.command: getenforce
+  register: selinux_status
+  changed_when: false
+  failed_when: selinux_status.stdout != "Enforcing"

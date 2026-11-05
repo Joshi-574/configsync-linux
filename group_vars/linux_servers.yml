@@ -1,0 +1,16 @@
+---
+# Common settings managed by ConfigSync
+
+configsync_project: "ConfigSync"
+configsync_owner: "root"
+configsync_group: "root"
+
+timezone: "Asia/Kolkata"
+
+common_packages:
+  - curl
+  - vim-enhanced
+  - git
+  - tar
+
+security_updates_enabled: true

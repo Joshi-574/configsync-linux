@@ -1,0 +1,10 @@
+- name: Read current system timezone
+  ansible.builtin.command:
+    argv:
+      - timedatectl
+      - show
+      - --property=Timezone
+      - --value
+  register: current_timezone
+  changed_when: false
+  check_mode: false
